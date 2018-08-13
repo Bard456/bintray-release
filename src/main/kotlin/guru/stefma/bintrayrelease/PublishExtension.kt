@@ -1,7 +1,5 @@
 package guru.stefma.bintrayrelease
 
-import groovy.transform.PackageScope
-
 /**
  * A gradle extension which will be used to configure the plugin.
  *
@@ -13,49 +11,40 @@ import groovy.transform.PackageScope
  *
  * Optional doesn't mean they aren't needed but that they will handled correctly by the plugin!
  */
-class PublishExtension {
+open class PublishExtension {
 
-    String repoName = 'maven'
-    String userOrg
+    var repoName = "maven"
+    var userOrg: String? = null
 
-    private String artifactId
+    open var artifactId: String? = null
 
-    void setArtifactId(String newArtifactId) {
-        artifactId = newArtifactId
-    }
+    var versionAttributes = emptyMap<String, String>()
 
-    String getArtifactId() {
-        return artifactId
-    }
+    var licences = arrayOf("Apache-2.0")
 
-    Map<String, String> versionAttributes = [:]
+    var uploadName = ""
 
-    String[] licences = ['Apache-2.0']
+    var desc: String? = null
 
-    String uploadName = ''
+    var website = ""
+    var issueTracker = ""
+    var repository = ""
+    var autoPublish = true
 
-    String desc
+    var bintrayUser = ""
+    var bintrayKey = ""
+    var dryRun = true
+    var override = false
 
-    String website = ''
-    String issueTracker = ''
-    String repository = ''
-    boolean autoPublish = true
-
-    String bintrayUser = ''
-    String bintrayKey = ''
-    boolean dryRun = true
-    boolean override = false
-
-    String[] publications
+    var publications = emptyArray<String>()
 
     /**
      * Validate all mandatory properties for this extension.
      *
      * Will throw a Exception if not setup correctly.
      */
-    @PackageScope
-    void validate() {
-        String extensionError = "";
+    internal fun validate() {
+        var extensionError = ""
         if (userOrg == null) {
             extensionError += "Missing userOrg. "
         }
@@ -66,9 +55,9 @@ class PublishExtension {
             extensionError += "Missing desc. "
         }
 
-        if (extensionError) {
-            String prefix = "Have you created the publish closure? "
-            throw new IllegalStateException(prefix + extensionError)
+        if (extensionError.isNotEmpty()) {
+            val prefix = "Have you created the publish closure? "
+            throw IllegalStateException(prefix + extensionError)
         }
     }
 
