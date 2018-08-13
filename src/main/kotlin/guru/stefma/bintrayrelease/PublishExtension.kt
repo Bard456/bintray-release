@@ -1,5 +1,7 @@
 package guru.stefma.bintrayrelease
 
+import guru.stefma.androidartifacts.ArtifactsExtension
+
 /**
  * A gradle extension which will be used to configure the plugin.
  *
@@ -11,12 +13,30 @@ package guru.stefma.bintrayrelease
  *
  * Optional doesn't mean they aren't needed but that they will handled correctly by the plugin!
  */
-open class PublishExtension {
+open class PublishExtension(
+        private val artifactsExtension: ArtifactsExtension
+) {
+
+    var artifactId
+        set(value) {
+            artifactsExtension.artifactId = value
+        }
+        get() = artifactsExtension.artifactId
+
+    var javadoc
+        set(value) {
+            artifactsExtension.javadoc = value
+        }
+        get() = artifactsExtension.javadoc
+
+    var sources
+        set(value) {
+            artifactsExtension.sources = value
+        }
+        get() = artifactsExtension.sources
 
     var repoName = "maven"
     var userOrg: String? = null
-
-    open var artifactId: String? = null
 
     var versionAttributes = emptyMap<String, String>()
 
