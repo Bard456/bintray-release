@@ -1,5 +1,6 @@
 plugins {
     id 'groovy'
+    id "org.jetbrains.kotlin.jvm" version "1.2.60"
 }
 
 repositories {
@@ -7,11 +8,11 @@ repositories {
     google()
 }
 
-// We have to make sure that we are using the same dependencies as in our 'core' project
+// We have to make sure that we are using the same dependencies as in our top-level project
 dependencies {
-    compile gradleApi()
-    compile 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
-    compile 'guru.stefma.androidartifacts:androidartifacts:1.0.0'
+    implementation(localGroovy())
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4")
+    implementation("guru.stefma.androidartifacts:androidartifacts:1.1.1")
 }
-
-sourceSets.main.groovy.srcDir '../../src/main/groovy'
+sourceSets.main.kotlin.srcDir("../../src/main/kotlin")
