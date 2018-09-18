@@ -3,15 +3,12 @@
 # BintrayRelease
 A super duper easy way to release your Android and Java artifacts to [Bintray](https://bintray.com).
 
-
 ## Description
 This is a helper for releasing Android and Java libraries to Bintray. 
-Basically it is "just" a wrapper around the [Gradle-Bintray-Plugin](https://github.com/bintray/gradle-bintray-plugin) and the [AndroidArtifacts Plugin](https://github.com/StefMa/AndroidArtifacts).
+Basically it is "just" a wrapper around the [Gradle-Bintray-Plugin](https://github.com/bintray/gradle-bintray-plugin) 
+and the [AndroidArtifacts Plugin](https://github.com/StefMa/AndroidArtifacts).
 
-The Plugin configure all artifacts for you and hock it into the `Gradle-Bintay-Plugin`.
-
-At this time of writing it supports "all Android" libraries which will be supported by the `AndroidArtifacts` Plugin.
-Beside of that it will create artifacts for Java libraries. But later this should be part of the `AndroidArtifacts` Plugin.
+The Plugin configure all artifacts for you and hook into the `Gradle-Bintay-Plugin`.
 
 ## How to use it
 ### Apply the Plugin
@@ -19,7 +16,7 @@ Put the following lines to your **project** `build.gradle`:
 
 ```groovy
 apply plugin: "com.android.library"
-apply plugin: "guru.stefma.bintrayrelease" //1
+apply plugin: "guru.stefma.bintrayrelease"
 
 buildscript {
     repositories {

@@ -41,7 +41,7 @@ jobs:
 
       - run:
           command: |
-              cd samples
+              cd subprojects/consumer
               echo "sdk.dir=$HOME/android-sdk" >> local.properties
               ./gradlew clean build bintrayUpload -PbintrayUser=user -PbintrayKey=secret -PdryRun=true --info --no-daemon
 
