@@ -12,4 +12,4 @@ This allows all modules in this folder to have the bintray-release plugin on the
 #### android
 This is an example project using the `bintray-release` plugin to release an Android library.
 #### jvm
-This is an example proect using the `bintray-release` plugin to release a Java library.
+This is an example project using the `bintray-release` plugin to release a Java library.

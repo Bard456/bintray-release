@@ -15,4 +15,4 @@ dependencies {
     implementation("com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4")
     implementation("guru.stefma.androidartifacts:androidartifacts:1.1.1")
 }
-sourceSets.main.kotlin.srcDir("../../src/main/kotlin")
+sourceSets.main.kotlin.srcDir("../../../src/main/kotlin")
