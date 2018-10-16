@@ -1,4 +1,5 @@
 import guru.stefma.bintrayrelease.PublishExtension
+import guru.stefma.androidartifacts.ArtifactsExtension
 import guru.stefma.bintrayrelease.BintrayReleasePlugin
 
 apply(plugin = "java-library")
@@ -14,9 +15,12 @@ dependencies {
 
 group = "guru.stefma.bintrayrelease.consumer"
 version = "0.0.1"
+configure<ArtifactsExtension> {
+    artifactId = "jvm-sample"
+}
+
 configure<PublishExtension> {
     userOrg = "stefma"
-    artifactId = "jvm-sample"
     desc = "Just a simple java lib sample"
     website = "https://github.com/stefma/bintray-release"
 }

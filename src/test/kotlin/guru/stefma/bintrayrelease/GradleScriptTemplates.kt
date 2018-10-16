@@ -18,9 +18,11 @@ val javaBuldScript: String
 
             group = "guru.stefma"
             version = "1.0"
+            javaArtifact {
+                artifactId = "test"
+            }
             publish {
                 userOrg = 'stefma'
-                artifactId = 'test'
                 desc = 'description'
             }
                """
@@ -71,6 +73,9 @@ val androidBuildScript: String
 
             group = "guru.stefma"
             version = "1.0"
+            androidArtifact {
+                artifactId = "test"
+            }
             publish {
                 userOrg = 'stefma'
                 artifactId = 'test'
