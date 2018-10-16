@@ -5,7 +5,7 @@ If you want to checkout/use/test the samples - you should import this folder as 
 It is a separate project because with gradle plugins - you cannot have a reference to your working code as a module. 
 i.e. to test any changes you either have to make a release and depend on it, or like we are doing here have a second project 
 
-In the `buildSrc` folder, we have a folder reference to the source of this plugin (`../../src/main/groovy`). 
+In the `buildSrc` folder, we have a folder reference to the source of this plugin (`../../src/main/kotlin`). 
 This allows all modules in this folder to have the bintray-release plugin on their classpath at development time.
 
 ### Modules
