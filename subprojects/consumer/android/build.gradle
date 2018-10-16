@@ -8,8 +8,8 @@ buildscript {
     }
 }
 
+apply plugin: guru.stefma.bintrayrelease.BintrayReleasePlugin
 apply plugin: 'com.android.library'
-apply plugin: guru.stefma.bintrayrelease.ReleasePlugin
 
 android {
     compileSdkVersion 27

@@ -32,9 +32,9 @@ tasks.getByName<GroovyCompile>("compileGroovy") {
 
 gradlePlugin {
     plugins {
-        create("binrayRelease ") {
+        create("binrayRelease") {
             id = "guru.stefma.bintrayrelease"
-            implementationClass = "guru.stefma.bintrayrelease.ReleasePlugin"
+            implementationClass = "guru.stefma.bintrayrelease.BintrayReleasePlugin"
         }
     }
 }
