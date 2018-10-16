@@ -16,18 +16,13 @@ repositories {
 }
 
 dependencies {
-    implementation(localGroovy())
     implementation(kotlin("stdlib-jdk8"))
     implementation("com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4")
     implementation("guru.stefma.androidartifacts:androidartifacts:1.2.0")
 
+    testImplementation(localGroovy())
     testImplementation("junit:junit:4.12")
     testImplementation("org.assertj:assertj-core:3.11.1")
-}
-
-tasks.getByName<GroovyCompile>("compileGroovy") {
-    sourceCompatibility = "1.6"
-    targetCompatibility = "1.6"
 }
 
 gradlePlugin {
