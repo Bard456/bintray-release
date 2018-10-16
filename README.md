@@ -25,8 +25,10 @@ buildscript {
 }
 ```
 
-### Configure the `publish` extension
-The Plugin brings a `publish` extension which needs to be setup in your **module** `build.gradle` in the following way:
+### Configure the extensions
+Because the plugin depends heavily on the **AndroidArtifacts** plugin we have to setup **two** extensions. 
+The `androidArtifact` (resp. `javaArtifact`) and the `publish` extension which needs to be configured
+in your **module** `build.gradle`:
 
 ```groovy
 apply plugin: "com.android.library" // 1
