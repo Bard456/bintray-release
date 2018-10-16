@@ -1,6 +1,6 @@
 plugins {
-    id 'groovy'
-    id "org.jetbrains.kotlin.jvm" version "1.2.60"
+    groovy
+    kotlin("jvm") version "1.2.71"
 }
 
 repositories {
@@ -15,4 +15,4 @@ dependencies {
     implementation("com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4")
     implementation("guru.stefma.androidartifacts:androidartifacts:1.2.0")
 }
-sourceSets.main.kotlin.srcDir("../../../src/main/kotlin")
+kotlin.sourceSets["main"].kotlin.srcDir("../../../src/main/kotlin")

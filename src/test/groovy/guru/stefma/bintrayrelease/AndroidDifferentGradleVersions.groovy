@@ -25,6 +25,10 @@ class AndroidDifferentGradleVersions {
                 new GradleVerionsParams(gradleVersion: "4.7", expectedTaskOutcome: TaskOutcome.SUCCESS),
                 new GradleVerionsParams(gradleVersion: "4.8", expectedTaskOutcome: TaskOutcome.SUCCESS),
                 new GradleVerionsParams(gradleVersion: "4.8.1", expectedTaskOutcome: TaskOutcome.SUCCESS),
+                new GradleVerionsParams(gradleVersion: "4.9", expectedTaskOutcome: TaskOutcome.SUCCESS),
+                new GradleVerionsParams(gradleVersion: "4.10", expectedTaskOutcome: TaskOutcome.SUCCESS),
+                new GradleVerionsParams(gradleVersion: "4.10.1", expectedTaskOutcome: TaskOutcome.SUCCESS),
+                new GradleVerionsParams(gradleVersion: "4.10.2", expectedTaskOutcome: TaskOutcome.SUCCESS)
         ]
     }
 

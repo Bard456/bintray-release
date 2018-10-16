@@ -2,7 +2,7 @@ import guru.stefma.bintrayrelease.PublishExtension
 
 plugins {
     groovy
-    kotlin("jvm") version "1.2.60"
+    kotlin("jvm") version "1.2.71"
     `java-gradle-plugin`
     `java-library`
     id("guru.stefma.bintrayrelease") version "1.0.0" apply false
@@ -22,7 +22,7 @@ dependencies {
     implementation("guru.stefma.androidartifacts:androidartifacts:1.2.0")
 
     testImplementation("junit:junit:4.12")
-    testImplementation("org.assertj:assertj-core:3.9.0")
+    testImplementation("org.assertj:assertj-core:3.11.1")
 }
 
 tasks.getByName<GroovyCompile>("compileGroovy") {
