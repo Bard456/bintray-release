@@ -24,6 +24,9 @@ configure<LibraryExtension> {
         versionName = "1.0.0"
         //archivesBaseName = "$archivesBaseName-$versionName" // This is not working
     }
+    lintOptions {
+        isAbortOnError = false
+    }
 }
 
 repositories {
