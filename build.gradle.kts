@@ -22,7 +22,7 @@ dependencies {
     implementation("guru.stefma.androidartifacts:androidartifacts:1.2.0")
 
     testImplementation("junit:junit:4.12")
-    testImplementation("org.assertj:assertj-core:3.9.0")
+    testImplementation("org.assertj:assertj-core:3.11.1")
 }
 
 tasks.getByName<GroovyCompile>("compileGroovy") {
