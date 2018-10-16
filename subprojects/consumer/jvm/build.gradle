@@ -1,5 +1,5 @@
-apply plugin: 'java-library'
 apply plugin: guru.stefma.bintrayrelease.ReleasePlugin
+apply plugin: 'java-library'
 
 repositories {
     jcenter()
