@@ -2,7 +2,7 @@ import guru.stefma.bintrayrelease.PublishExtension
 
 plugins {
     groovy
-    kotlin("jvm") version "1.2.60"
+    kotlin("jvm") version "1.2.71"
     `java-gradle-plugin`
     `java-library`
     id("guru.stefma.bintrayrelease") version "1.0.0" apply false
