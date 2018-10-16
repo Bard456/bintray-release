@@ -8,8 +8,8 @@ buildscript {
     }
 }
 
+apply plugin: guru.stefma.bintrayrelease.BintrayReleasePlugin
 apply plugin: 'com.android.library'
-apply plugin: guru.stefma.bintrayrelease.ReleasePlugin
 
 android {
     compileSdkVersion 27
@@ -31,11 +31,11 @@ dependencies {
     implementation "com.android.support:appcompat-v7:27.0.2"
 }
 
-group = "guru.stefma"
+group = "guru.stefma.bintrayrelease.consumer"
 version = "0.0.1"
 publish {
     userOrg = 'stefma'
-    artifactId = 'bintray-release.android.sample'
+    artifactId = 'android-sample'
     desc = 'Just a simple android lib sample'
     website = 'https://github.com/stefma/bintray-release'
 }

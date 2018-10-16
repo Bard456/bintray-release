@@ -19,7 +19,7 @@ dependencies {
     implementation(localGroovy())
     implementation(kotlin("stdlib-jdk8"))
     implementation("com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4")
-    implementation("guru.stefma.androidartifacts:androidartifacts:1.1.1")
+    implementation("guru.stefma.androidartifacts:androidartifacts:1.2.0")
 
     testImplementation("junit:junit:4.12")
     testImplementation("org.assertj:assertj-core:3.9.0")
@@ -32,9 +32,9 @@ tasks.getByName<GroovyCompile>("compileGroovy") {
 
 gradlePlugin {
     plugins {
-        create("binrayRelease ") {
+        create("binrayRelease") {
             id = "guru.stefma.bintrayrelease"
-            implementationClass = "guru.stefma.bintrayrelease.ReleasePlugin"
+            implementationClass = "guru.stefma.bintrayrelease.BintrayReleasePlugin"
         }
     }
 }
