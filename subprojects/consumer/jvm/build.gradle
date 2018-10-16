@@ -9,11 +9,11 @@ dependencies {
     implementation "junit:junit:4.12"
 }
 
-group = "guru.stefma"
+group = "guru.stefma.bintrayrelease.consumer"
 version = "0.0.1"
 publish {
     userOrg = 'stefma'
-    artifactId = 'bintray-release.jvm.sample'
+    artifactId = 'jvm-sample'
     desc = 'Just a simple java lib sample'
     website = 'https://github.com/stefma/bintray-release'
 }
