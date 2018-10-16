@@ -1,6 +1,6 @@
 package guru.stefma.bintrayrelease
 
-val javaBuldScript: String
+val javaBuildScript: String
     get() {
         return """
             plugins {
