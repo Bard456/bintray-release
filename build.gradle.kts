@@ -1,7 +1,6 @@
 import guru.stefma.bintrayrelease.PublishExtension
 
 plugins {
-    groovy
     kotlin("jvm") version "1.2.71"
     `java-gradle-plugin`
     `java-library`
@@ -20,9 +19,14 @@ dependencies {
     implementation("com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4")
     implementation("guru.stefma.androidartifacts:androidartifacts:1.2.0")
 
-    testImplementation(localGroovy())
-    testImplementation("junit:junit:4.12")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.3.1")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.1")
     testImplementation("org.assertj:assertj-core:3.11.1")
+}
+
+tasks.withType(Test::class.java) {
+    useJUnitPlatform()
 }
 
 gradlePlugin {
