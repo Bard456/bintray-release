@@ -78,7 +78,6 @@ val androidBuildScript: String
             }
             publish {
                 userOrg = 'stefma'
-                artifactId = 'test'
                 desc = 'description'
             }
                """
