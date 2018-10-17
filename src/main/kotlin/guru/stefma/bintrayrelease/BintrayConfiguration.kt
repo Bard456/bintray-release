@@ -1,26 +1,28 @@
 package guru.stefma.bintrayrelease
 
 import com.jfrog.bintray.gradle.BintrayExtension
+import guru.stefma.androidartifacts.ArtifactsExtension
 import org.gradle.api.Project
 
 class BintrayConfiguration(
-        private val extension: PublishExtension
+        private val artifactsExtension: ArtifactsExtension,
+        private val publishExtension: PublishExtension
 ) {
 
     fun configure(project: Project) {
         initDefaults()
         deriveDefaultsFromProject(project)
 
-        val propertyFinder = PropertyFinder(project, extension)
+        val propertyFinder = PropertyFinder(project, publishExtension)
 
         project.extensions.getByType(BintrayExtension::class.java).apply {
             user = propertyFinder.getBintrayUser()
             key = propertyFinder.getBintrayKey()
-            publish = extension.autoPublish
+            publish = publishExtension.autoPublish
             dryRun = propertyFinder.getDryRun()
             override = propertyFinder.getOverride()
 
-            val publication = extension.publications.run {
+            val publication = publishExtension.publications.run {
                 if (isNotEmpty()) {
                     this
                 } else {
@@ -34,45 +36,45 @@ class BintrayConfiguration(
             setPublications(*publication)
 
             pkg.apply {
-                repo = extension.repoName
-                userOrg = extension.userOrg
-                name = extension.uploadName
-                desc = extension.desc
-                websiteUrl = extension.website
-                issueTrackerUrl = extension.issueTracker
-                vcsUrl = extension.repository
+                repo = publishExtension.repoName
+                userOrg = publishExtension.userOrg
+                name = publishExtension.uploadName
+                desc = publishExtension.desc
+                websiteUrl = publishExtension.website
+                issueTrackerUrl = publishExtension.issueTracker
+                vcsUrl = publishExtension.repository
 
-                setLicenses(*extension.licences)
+                setLicenses(*publishExtension.licences)
                 version.apply {
                     name = project.version.toString()
-                    attributes = extension.versionAttributes
+                    attributes = publishExtension.versionAttributes
                 }
             }
         }
     }
 
     private fun initDefaults() {
-        if (extension.uploadName.isEmpty()) {
-            extension.uploadName = extension.artifactId!!
+        if (publishExtension.uploadName.isEmpty()) {
+            publishExtension.uploadName = artifactsExtension.artifactId!!
         }
 
-        if (extension.website.contains("github.com")) {
-            if (extension.issueTracker.isEmpty()) {
-                extension.issueTracker = "${extension.website}/issues"
+        if (publishExtension.website.contains("github.com")) {
+            if (publishExtension.issueTracker.isEmpty()) {
+                publishExtension.issueTracker = "${publishExtension.website}/issues"
             }
-            if (extension.repository.isEmpty()) {
-                extension.repository = "${extension.website}.git"
+            if (publishExtension.repository.isEmpty()) {
+                publishExtension.repository = "${publishExtension.website}.git"
             }
         }
     }
 
     private fun deriveDefaultsFromProject(project: Project) {
-        if (extension.versionAttributes.isEmpty()) {
+        if (publishExtension.versionAttributes.isEmpty()) {
             val gradlePluginPropertyFinder = GradlePluginPropertyFinder(project)
             val bestPluginId = gradlePluginPropertyFinder.findBestGradlePluginId()
             if (bestPluginId != null) {
-                extension.versionAttributes = mapOf("gradle-plugin" to "$bestPluginId:$project.group:$extension.artifactId")
-                project.logger.info("Using plugin identifier '" + extension.versionAttributes.get("gradle-plugins") + "' for gradle portal.")
+                publishExtension.versionAttributes = mapOf("gradle-plugin" to "$bestPluginId:$project.group:$publishExtension.artifactId")
+                project.logger.info("Using plugin identifier '" + publishExtension.versionAttributes.get("gradle-plugins") + "' for gradle portal.")
             }
         }
     }

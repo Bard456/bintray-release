@@ -5,19 +5,14 @@ A super duper easy way to release your Android and Java artifacts to [Bintray](h
 
 ## Description
 This is a helper for releasing Android and Java libraries to Bintray. 
-Basically it is "just" a wrapper around the [Gradle-Bintray-Plugin](https://github.com/bintray/gradle-bintray-plugin) 
-and the [AndroidArtifacts Plugin](https://github.com/StefMa/AndroidArtifacts).
-
-The Plugin configure all artifacts for you and hook into the `Gradle-Bintay-Plugin`.
+Basically it is just a wrapper around the [Gradle-Bintray-Plugin](https://github.com/bintray/gradle-bintray-plugin) 
+and the [AndroidArtifacts](https://github.com/StefMa/AndroidArtifacts) plugin.
 
 ## How to use it
 ### Apply the Plugin
 Put the following lines to your **project** `build.gradle`:
 
 ```groovy
-apply plugin: "com.android.library"
-apply plugin: "guru.stefma.bintrayrelease"
-
 buildscript {
     repositories {
         jcenter()
@@ -30,20 +25,28 @@ buildscript {
 }
 ```
 
-### Configure the `publish` extension
-The Plugin brings a `publish` extension which needs to be setup in your **module** `build.gradle` in the following way:
+### Configure the extensions
+Because the plugin depends heavily on the **AndroidArtifacts** plugin we have to setup **two** extensions. 
+The `androidArtifact` (resp. `javaArtifact`) and the `publish` extension which needs to be configured
+in your **module** `build.gradle`:
 
 ```groovy
+apply plugin: "com.android.library" // 1
+apply plugin: "guru.stefma.bintrayrelease"
+
 version = "1.0.0"
 group = "guru.stefma.bintrayrelease"
+androidArtifact { // 2
+    artifactId = "bintrayrelease"
+}
 publish {
     userOrg = 'stefma'
-    artifactId = 'bintrayrelease'
     desc = 'Oh hi, this is a nice description for a project, right?'
     website = 'https://github.com/stefma/bintray-release'
 }
-
 ```
+* **//1**: Could be either of the following plugins: `com.android.library`, `java-library`, `org.jetbrains.kotlin.jvm`, `kotlin`
+* **//2**: This is the extension from the [**AndroidArtifacts**](https://github.com/StefMa/AndroidArtifacts) plugin. Take a look into the README there for more options.
 
 ### Publish
 Finally, use the task `bintrayUpload` to publish (make sure you build the project first!):

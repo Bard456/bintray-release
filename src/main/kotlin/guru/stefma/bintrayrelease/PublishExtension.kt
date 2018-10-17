@@ -1,12 +1,13 @@
 package guru.stefma.bintrayrelease
 
+import com.jfrog.bintray.gradle.BintrayExtension
 import guru.stefma.androidartifacts.ArtifactsExtension
 
 /**
  * A gradle extension which will be used to configure the plugin.
  *
- * Most of the properties will be used to setup the `bintray-Extension` in BintrayConfiguration.
- * See also: https://github.com/bintray/gradle-bintray-plugin#plugin-dsl
+ * Most of the properties will be used to setup the [BintrayExtension] in the [BintrayConfiguration].
+ * [See also this documentation](https://github.com/bintray/gradle-bintray-plugin#plugin-dsl)
  *
  * Some properties are mandatory and have to be validated before any action on it happen.
  * The other ones are all optional or provide a default value.
@@ -14,26 +15,26 @@ import guru.stefma.androidartifacts.ArtifactsExtension
  * Optional doesn't mean they aren't needed but that they will handled correctly by the plugin!
  */
 open class PublishExtension(
-        private val artifactsExtension: ArtifactsExtension
+        @Deprecated("Just for compatibility reasons...") private val artifactsExtension: ArtifactsExtension
 ) {
 
-    var artifactId
+    @Deprecated("Use the `androidArtifact` resp. `javaArtifact` extension!")
+    var artifactId = ""
         set(value) {
             artifactsExtension.artifactId = value
         }
-        get() = artifactsExtension.artifactId
 
-    var javadoc
+    @Deprecated("Use the `androidArtifact` resp. `javaArtifact` extension!")
+    var javadoc = true
         set(value) {
             artifactsExtension.javadoc = value
         }
-        get() = artifactsExtension.javadoc
 
-    var sources
+    @Deprecated("Use the `androidArtifact` resp. `javaArtifact` extension!")
+    var sources = true
         set(value) {
             artifactsExtension.sources = value
         }
-        get() = artifactsExtension.sources
 
     var repoName = "maven"
     var userOrg: String? = null
@@ -67,9 +68,6 @@ open class PublishExtension(
         var extensionError = ""
         if (userOrg == null) {
             extensionError += "Missing userOrg. "
-        }
-        if (artifactId == null) {
-            extensionError += "Missing artifactId. "
         }
         if (desc == null) {
             extensionError += "Missing desc. "

@@ -25,7 +25,7 @@ class JavaDifferentGradleVersionsTest {
             gradleVersion: String
     ) {
         File(projectDir, "build.gradle").apply {
-            writeText(javaBuldScript)
+            writeText(javaBuildScript)
         }
 
         val runner = GradleRunner.create()

@@ -26,7 +26,7 @@ class BintrayReleasePlugin : Plugin<Project> {
         pluginManager.apply("com.jfrog.bintray")
         afterEvaluate {
             publishExtension.validate()
-            BintrayConfiguration(publishExtension).configure(project)
+            BintrayConfiguration(artifactsExtension, publishExtension).configure(project)
         }
     }
 

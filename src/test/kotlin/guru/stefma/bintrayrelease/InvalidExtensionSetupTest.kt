@@ -26,9 +26,11 @@ class InvalidExtensionSetupTest {
 
             group = "guru.stefma"
             version = "1.0"
+            javaArtifact {
+                artifactId = "test"
+            }
             publish {
                 userOrg = 'stefma'
-                artifactId = 'test'
                 // desc = 'description'
             }
                """)
