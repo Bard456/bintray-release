@@ -1,5 +1,6 @@
 [![CircleCI](https://circleci.com/gh/StefMa/bintray-release.svg?style=svg)](https://circleci.com/gh/StefMa/bintray-release)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Download](https://api.bintray.com/packages/stefma/maven/BintrayRelease/images/download.svg) ](https://bintray.com/stefma/maven/BintrayRelease/_latestVersion)
 # BintrayRelease
 A super duper easy way to release your Android and Java artifacts to [Bintray](https://bintray.com).
 
