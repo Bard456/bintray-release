@@ -21,7 +21,7 @@ class BintrayReleasePlugin : Plugin<Project> {
 
     private fun setupPlugin(project: Project) = with(project) {
         val artifactsExtension = extensions.getByType(ArtifactsExtension::class.java)
-        val publishExtension = extensions.create("publish", PublishExtension::class.java)
+        val publishExtension = extensions.create("publish", PublishExtension::class.java, artifactsExtension)
 
         pluginManager.apply("com.jfrog.bintray")
         afterEvaluate {

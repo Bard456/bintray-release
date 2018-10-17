@@ -1,6 +1,7 @@
 package guru.stefma.bintrayrelease
 
 import com.jfrog.bintray.gradle.BintrayExtension
+import guru.stefma.androidartifacts.ArtifactsExtension
 
 /**
  * A gradle extension which will be used to configure the plugin.
@@ -13,7 +14,27 @@ import com.jfrog.bintray.gradle.BintrayExtension
  *
  * Optional doesn't mean they aren't needed but that they will handled correctly by the plugin!
  */
-open class PublishExtension {
+open class PublishExtension(
+        @Deprecated("Just for compatibility reasons...") private val artifactsExtension: ArtifactsExtension
+) {
+
+    @Deprecated("Use the `androidArtifact` resp. `javaArtifact` extension!")
+    var artifactId = ""
+        set(value) {
+            artifactsExtension.artifactId = value
+        }
+
+    @Deprecated("Use the `androidArtifact` resp. `javaArtifact` extension!")
+    var javadoc = true
+        set(value) {
+            artifactsExtension.javadoc = value
+        }
+
+    @Deprecated("Use the `androidArtifact` resp. `javaArtifact` extension!")
+    var sources = true
+        set(value) {
+            artifactsExtension.sources = value
+        }
 
     var repoName = "maven"
     var userOrg: String? = null
