@@ -31,8 +31,8 @@ configure<LibraryExtension> {
 }
 
 repositories {
-    jcenter()
     google()
+    jcenter()
 }
 
 dependencies {
