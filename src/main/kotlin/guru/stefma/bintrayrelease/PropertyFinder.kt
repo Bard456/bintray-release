@@ -28,7 +28,8 @@ class PropertyFinder(
     }
 
     private fun getBoolean(propertyName: String, defaultValue: Boolean): Boolean {
-        return project.properties[propertyName] as? Boolean ?: defaultValue
+        val value = project.properties[propertyName] as? String ?: return defaultValue
+        return value.toBoolean()
     }
 
 }
