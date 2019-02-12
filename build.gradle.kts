@@ -14,7 +14,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4")
-    implementation("guru.stefma.androidartifacts:androidartifacts:1.2.0")
+    implementation("guru.stefma.androidartifacts:androidartifacts:1.4.0")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.1")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.3.1")
