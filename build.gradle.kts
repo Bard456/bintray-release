@@ -3,11 +3,8 @@ import guru.stefma.bintrayrelease.PublishExtension
 plugins {
     kotlin("jvm") version "1.3.21"
     `java-gradle-plugin`
-    `java-library`
-    id("guru.stefma.bintrayrelease") version "1.0.0" apply false
-    maven
+    id("guru.stefma.bintrayrelease") version "1.1.1" 
 }
-apply(plugin = "guru.stefma.bintrayrelease")
 
 repositories {
     google()
@@ -40,9 +37,12 @@ gradlePlugin {
 
 version = "1.1.1"
 group = "guru.stefma.bintrayrelease"
-configure<PublishExtension> {
-    userOrg = "stefma"
+javaArtifact { 
     artifactId = "bintrayrelease"
+}
+
+publish {
+    userOrg = "stefma"
     uploadName = "BintrayRelease"
     desc = "Super duper easy way to release your Android and other artifacts to bintray"
     website = "https://github.com/StefMa/bintray-release"
