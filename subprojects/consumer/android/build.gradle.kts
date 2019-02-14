@@ -3,16 +3,6 @@ import guru.stefma.androidartifacts.ArtifactsExtension
 import guru.stefma.bintrayrelease.PublishExtension
 import guru.stefma.bintrayrelease.BintrayReleasePlugin
 
-buildscript {
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:3.0.1")
-    }
-}
-
 apply<BintrayReleasePlugin>()
 apply(plugin = "com.android.library")
 
