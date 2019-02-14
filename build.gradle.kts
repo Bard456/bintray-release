@@ -38,7 +38,7 @@ gradlePlugin {
     }
 }
 
-version = "1.1.1-NOSNAPSHOT"
+version = "1.1.2"
 group = "guru.stefma.bintrayrelease"
 javaArtifact { 
     artifactId = "bintrayrelease"
