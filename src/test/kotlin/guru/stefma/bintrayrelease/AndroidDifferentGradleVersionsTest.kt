@@ -29,7 +29,12 @@ class AndroidDifferentGradleVersionsTest {
         }
 
         File(projectDir, "settings.gradle").apply {
-            writeText(androidSettingsScript)
+            val agpVersion = when {
+                listOf("4.4", "4.5", "4.5.1").contains(gradleVersion) -> "3.1.0"
+                "4.10.2" == gradleVersion -> "3.3.0"
+                else -> "3.2.1"
+            }
+            writeText(androidSettingsScript(agpVersion))
         }
 
         File(projectDir, "/src/main/AndroidManifest.xml").apply {

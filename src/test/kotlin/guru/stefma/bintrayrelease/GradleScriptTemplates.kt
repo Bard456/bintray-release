@@ -71,8 +71,9 @@ val androidBuildScript: String
                """
     }
 
-val androidSettingsScript: String
-    get() =
+val androidSettingsScript = androidSettingsScript()
+
+fun androidSettingsScript(agpVersion: String = "3.2.1"): String =
         """
             pluginManagement {
                 repositories {
@@ -83,7 +84,7 @@ val androidSettingsScript: String
                 resolutionStrategy {
                     eachPlugin {
                         if (requested.id.id.startsWith("com.android")) {
-                            useModule("com.android.tools.build:gradle:3.2.1")
+                            useModule("com.android.tools.build:gradle:$agpVersion")
                         }
                         if (requested.id.id.startsWith("guru.stefma")) {
                             useModule("guru.stefma.bintrayrelease:bintrayrelease:${System.getProperty("pluginVersion")}")
