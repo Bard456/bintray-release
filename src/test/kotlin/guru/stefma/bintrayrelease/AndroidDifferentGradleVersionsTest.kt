@@ -28,6 +28,15 @@ class AndroidDifferentGradleVersionsTest {
             writeText(androidBuildScript)
         }
 
+        File(projectDir, "settings.gradle").apply {
+            val agpVersion = when {
+                listOf("4.4", "4.5", "4.5.1").contains(gradleVersion) -> "3.1.0"
+                "4.10.2" == gradleVersion -> "3.3.0"
+                else -> "3.2.1"
+            }
+            writeText(androidSettingsScript(agpVersion))
+        }
+
         File(projectDir, "/src/main/AndroidManifest.xml").apply {
             parentFile.mkdirs()
             writeText("<manifest package=\"guru.stefma.bintrayrelease.test\"/>")
@@ -36,7 +45,6 @@ class AndroidDifferentGradleVersionsTest {
         val runner = GradleRunner.create()
                 .withProjectDir(projectDir)
                 .withArguments("build", "bintrayUpload", "-PbintrayKey=key", "-PbintrayUser=user")
-                .withPluginClasspath()
                 .withGradleVersion(gradleVersion)
 
         assertThat(runner.build().task(":bintrayUpload")!!.outcome).isEqualTo(TaskOutcome.SUCCESS)

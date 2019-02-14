@@ -31,22 +31,10 @@ val javaBuildScript: String
 val androidBuildScript: String
     get() {
         return """
-            buildscript {
-                repositories {
-                    jcenter()
-                    google()
-                }
-                dependencies {
-                    classpath 'com.android.tools.build:gradle:3.0.0'
-                }
-            }
-
             plugins {
-                id 'guru.stefma.bintrayrelease' apply false
+                id 'guru.stefma.bintrayrelease'
+                id 'com.android.library'
             }
-
-            apply plugin: "guru.stefma.bintrayrelease"
-            apply plugin: "com.android.library"
 
             android {
                 compileSdkVersion 26
@@ -82,3 +70,26 @@ val androidBuildScript: String
             }
                """
     }
+
+val androidSettingsScript = androidSettingsScript()
+
+fun androidSettingsScript(agpVersion: String = "3.2.1"): String =
+        """
+            pluginManagement {
+                repositories {
+                    mavenLocal()
+                    google()
+                    jcenter()
+                }
+                resolutionStrategy {
+                    eachPlugin {
+                        if (requested.id.id.startsWith("com.android")) {
+                            useModule("com.android.tools.build:gradle:$agpVersion")
+                        }
+                        if (requested.id.id.startsWith("guru.stefma")) {
+                            useModule("guru.stefma.bintrayrelease:bintrayrelease:${System.getProperty("pluginVersion")}")
+                        }
+                    }
+                }
+            }
+        """
