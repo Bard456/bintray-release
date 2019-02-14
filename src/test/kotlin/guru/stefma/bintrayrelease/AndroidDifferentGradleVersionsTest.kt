@@ -28,6 +28,10 @@ class AndroidDifferentGradleVersionsTest {
             writeText(androidBuildScript)
         }
 
+        File(projectDir, "settings.gradle").apply {
+            writeText(androidSettingsScript)
+        }
+
         File(projectDir, "/src/main/AndroidManifest.xml").apply {
             parentFile.mkdirs()
             writeText("<manifest package=\"guru.stefma.bintrayrelease.test\"/>")
@@ -36,7 +40,6 @@ class AndroidDifferentGradleVersionsTest {
         val runner = GradleRunner.create()
                 .withProjectDir(projectDir)
                 .withArguments("build", "bintrayUpload", "-PbintrayKey=key", "-PbintrayUser=user")
-                .withPluginClasspath()
                 .withGradleVersion(gradleVersion)
 
         assertThat(runner.build().task(":bintrayUpload")!!.outcome).isEqualTo(TaskOutcome.SUCCESS)

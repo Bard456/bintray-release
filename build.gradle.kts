@@ -20,8 +20,13 @@ dependencies {
     testImplementation("org.assertj:assertj-core:3.11.1")
 }
 
-tasks.withType(Test::class.java) {
-    useJUnitPlatform()
+afterEvaluate {
+    tasks.withType(Test::class.java).configureEach {
+        dependsOn(tasks.named("publishToMavenLocal"))
+        systemProperty("pluginVersion", version)
+
+        useJUnitPlatform()
+    }
 }
 
 gradlePlugin {
@@ -33,7 +38,7 @@ gradlePlugin {
     }
 }
 
-version = "1.1.1"
+version = "1.1.1-NOSNAPSHOT"
 group = "guru.stefma.bintrayrelease"
 javaArtifact { 
     artifactId = "bintrayrelease"
