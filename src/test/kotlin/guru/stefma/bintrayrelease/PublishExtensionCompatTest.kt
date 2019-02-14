@@ -20,22 +20,10 @@ class PublishExtensionCompatTest {
     fun `test artifactId in the publish extension in a compatibility way`() {
         File(projectDir, "build.gradle").apply {
             writeText("""
-                buildscript {
-                    repositories {
-                        jcenter()
-                        google()
-                    }
-                    dependencies {
-                        classpath 'com.android.tools.build:gradle:3.0.0'
-                    }
-                }
-
                 plugins {
-                    id 'guru.stefma.bintrayrelease' apply false
+                    id 'guru.stefma.bintrayrelease'
+                    id 'com.android.library'
                 }
-
-                apply plugin: "guru.stefma.bintrayrelease"
-                apply plugin: "com.android.library"
 
                 android {
                     compileSdkVersion 26
@@ -70,6 +58,10 @@ class PublishExtensionCompatTest {
             """.trimIndent())
         }
 
+        File(projectDir, "settings.gradle").apply {
+            writeText(androidSettingsScript)
+        }
+
         File(projectDir, "/src/main/AndroidManifest.xml").apply {
             parentFile.mkdirs()
             writeText("<manifest package=\"guru.stefma.bintrayrelease.test\"/>")
@@ -78,7 +70,6 @@ class PublishExtensionCompatTest {
         val runner = GradleRunner.create()
                 .withProjectDir(projectDir)
                 .withArguments("build", "bintrayUpload", "-PbintrayKey=key", "-PbintrayUser=user")
-                .withPluginClasspath()
 
         assertThat(runner.build().task(":bintrayUpload")!!.outcome).isEqualTo(TaskOutcome.SUCCESS)
     }
